@@ -1,0 +1,24 @@
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left-nav">
+      <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png", alt: "サイトのロゴ画像"), "#", id: "logo" %>
+      <%= form_with url: "#" do |f| %>
+        <div class="header-search d-lg-inline-block d-none">
+          <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="header-search d-lg-inline-block d-none">
+          <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
+          <i class="fas fa-search"></i>
+        </div>
+        <input type="submit" name="commit" value="" class="d-none" data-disable-with="">
+      <% end %>
+    </div>
+    <div class="header-right-nav">
+      <div class="nav-item">
+        <%= link_to "ログイン", "#", class: "btn btn-primary my-2 mx-3" %>
+        <%= link_to "登録する", "#", class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</header>
