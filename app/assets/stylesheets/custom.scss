@@ -143,61 +143,92 @@ a {
 
 // user-account
 
-.user .user-nav-pc {
-  height: 100vh;
+.user {
+  .user-nav-pc {
+    height: 100vh;
+    .active {
+      border-right: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+  }
+  .user-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    li {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  .user-nav-mobile {
+    .active {
+    border-bottom: 3px solid #4a90e2;
+    }
+    li {
+      float: left;
+    }
+  }
+  .user-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+  }
+  .user-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 30px auto;
+  }
+  .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+  }
+  .update-content label {
+    font-weight: bold;
+  }
 }
 
-.user .user-nav {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 30px 15px;
-}
+// signup
 
-.user .user-nav-pc .active {
-  border-right: 3px solid #4a90e2;
-}
-
-.user .user-nav li {
-  font-size: 18px;
-  padding: 10px;
-}
-
-.user .user-nav-pc .active a {
-  color: #4a90e2;
-}
-
-.user .user-nav-mobile .active {
-  border-bottom: 3px solid #4a90e2;
-}
-
-.user .user-nav-mobile .active {
-  border-bottom: 3px solid #4a90e2;
-}
-
-.user .user-nav-mobile li {
-  float: left;
-}
-
-.user .user-view {
-  background-color: #F6F8F9;
-  border-left: 2px solid #e2e2e2;
-}
-
-.user .user-view-box {
-  max-width: 880px;
-  background-color: #fff;
-  border: 1px solid #eaedef;
-  margin: 30px auto;
-}
-
-.user .update-content {
-  border-bottom: 1px solid #eaedef;
-  padding: 20px;
-  margin: 0 15px;
+.device {
+  padding-top: 36px;
   font-size: 16px;
+  p {
+    font-size: 16px;
+  }
+  a {
+    color: #007bff !important;
+  }
 }
 
-.user .update-content label {
-  font-weight: bold;
+.device_frame {
+  max-width: 600px;
+  text-align: center;
+  padding: 24px;
+  margin: 0px auto;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(21, 27, 38, 0.15) 0px 1px 3px 0px;
 }
 
+.device_inner {
+  width: 360px;
+  margin: 0px auto;
+}
+
+div.field, div.actions {
+   margin-bottom: 10px;
+}
+
+.required-b::before {
+  content: "必須";
+  color: #fff;
+  background-color: #ff0000a8;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 0 5px;
+}
