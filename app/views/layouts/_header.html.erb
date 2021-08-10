@@ -14,11 +14,31 @@
         <input type="submit" name="commit" value="" class="d-none" data-disable-with="">
       <% end %>
     </div>
+    
     <div class="header-right-nav">
-      <div class="nav-item">
-        <%= link_to "ログイン", users_sign_in_path, class: "btn btn-primary my-2 mx-3" %>
-        <%= link_to "登録する", users_sign_up_path, class: "btn btn-secondary" %>
-      </div>
+      <% if logged_in? %>
+        <div class="nav-item d-sm-inline-block d-none">
+          <%= current_user.name %>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img class="mx-3 p-1 host-icon nav-trigger" alt="メニュー" src="/uploads/user/image/752/dog.jpg">
+          </a>
+          <ul class="header-nav-menu dropdown-menu">
+            <%= link_to "ルーム登録", "#" %>
+            <%= link_to "予約済みルーム一覧", "#" %>
+            <%= link_to "登録済みルーム一覧", "#" %>
+            <%= link_to "ルーム登録", "#" %>
+            <%= link_to "設定", current_user %>
+            <%= link_to "ログアウト", logout_path, method: :delete %>
+          </ul>
+        </div>
+      <% else %>
+        <div class="nav-item">
+          <%= link_to "ログイン", users_sign_in_path, class: "btn btn-primary my-2 mx-3" %>
+          <%= link_to "登録する", users_sign_up_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </header>
