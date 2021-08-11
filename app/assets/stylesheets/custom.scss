@@ -75,6 +75,30 @@ a {
   float: right;
 }
 
+.host-icon {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.header-nav-menu {
+  background-color: #fff;
+  border: 3px solid #F6F8F9;
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  padding: 15px;
+  z-index: 1000;
+  li {
+    line-height: 30px;
+    font-size: 16px;
+    padding: 3px 5px;
+  }
+}
+
+
 // footer
 .footer {
   position: absolute;
