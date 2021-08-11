@@ -6,6 +6,16 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
   
+  test "login with valid email/invalid password" do
+    get users_sign_in_path
+    post users_sign_in_path, params: { session: { email: @user.email,
+                                password: "invalid" } }
+    assert_template 'sessions/new'
+    assert_not flash.empty?
+    get root_path
+    assert flash.empty?
+  end
+  
   test "login with valid information" do
     get users_sign_in_path
     post users_sign_in_path, params: { session: { email: @user.email,
