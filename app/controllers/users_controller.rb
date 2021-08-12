@@ -21,8 +21,10 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     
+    
     unless @user.authenticate(params[:user_current_password])
       flash.now[:danger] = "現在のパスワードが正しくありません"
+      binding.pry
     end
     
     if @user.update(user_params) && @user.authenticate(params[:user_current_password])
