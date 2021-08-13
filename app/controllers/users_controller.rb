@@ -22,13 +22,15 @@ class UsersController < ApplicationController
     @user = current_user
     
     
-    unless @user.authenticate(params[:user_current_password])
+    if params[:user][:current_password].blank?
+      flash.now[:danger] = "現在のパスワードを入力して下さい"
+    elsif !@user.authenticate(params[:user][:current_password])
       flash.now[:danger] = "現在のパスワードが正しくありません"
-      binding.pry
     end
     
-    if @user.update(user_params) && @user.authenticate(params[:user_current_password])
-      
+    if @user.update(user_params) && !!@user.authenticate(params[:user][:current_password])
+      flash[:success] = "Your account has been updated successfully."
+      redirect_to root_url
     else
       render 'edit'
     end
