@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     
   def profile_update
     @user = current_user
+    @update_type = profile
     
     if @user.update(user_params)
       @user.image.attach(params[:user][:image])
