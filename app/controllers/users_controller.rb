@@ -24,13 +24,25 @@ class UsersController < ApplicationController
     @user = current_user
   end
   
+    
+  def profile_update
+    @user = current_user
+    
+    if @user.update(user_params) &&
+      @user.image.attach(params[:user][:image])
+      flash[:success] = "Profile was successfully updated."
+      redirect_to users_profile_url
+    else
+      render 'profile'
+    end
+  end
+  
   def edit
     @user = current_user
   end
   
   def update
     @user = current_user
-    
     
     if params[:user][:current_password].blank?
       flash.now[:danger] = "現在のパスワードを入力して下さい"
@@ -39,19 +51,19 @@ class UsersController < ApplicationController
     end
     
     if @user.update(user_params) && !!@user.authenticate(params[:user][:current_password])
+      @user.image.attach(params[:user][:image])
       flash[:success] = "Your account has been updated successfully."
       redirect_to root_url
     else
       render 'edit'
     end
   end
-  
-  
+
   private
   
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation)
+                                  :password_confirmation, :image, :introduction)
     end
     
     #beforeアクション

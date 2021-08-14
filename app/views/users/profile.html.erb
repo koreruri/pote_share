@@ -10,12 +10,16 @@
           </div>
         </div>
   
-        <%= form_with(model: @user, url: users_edit_path, local: true) do |f| %>
+        <%= form_with(model: @user, url: users_profile_path, local: true) do |f| %>
           <div class="update-content">
             <div class="row">
               <div class="col-md-6 offset-md-3">
                 <div class="icon-box">
-                  <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "アイコン画像", class: 'icon-image host-icon') %>
+                  <% if @user.image.attached? %>
+                    <%= image_tag(@user.image, alt: "アイコン画像", class: 'icon-image host-icon') %>
+                  <% else %>
+                    <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "アイコン画像", class: 'icon-image host-icon') %>
+                  <% end %>
                 </div>
               </div>
             </div>
