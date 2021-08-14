@@ -9,6 +9,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get users_sign_up_path
     assert_response :success
+    assert_redirected_to root_url
   end
   
   test "should redirect show when not logged in" do
