@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :profile, :profile_update, :edit, :update]
   
   def new
     @user = User.new
@@ -17,18 +18,13 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = current_user
   end
   
   def profile
-    @user = current_user
   end
   
     
   def profile_update
-    @user = current_user
-    @update_type = profile
-    
     if @user.update(user_params)
       @user.image.attach(params[:user][:image])
       flash[:success] = "Profile was successfully updated."
@@ -39,12 +35,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = current_user
   end
   
   def update
-    @user = current_user
-    
     if params[:user][:current_password].blank?
       flash.now[:danger] = "現在のパスワードを入力して下さい"
     elsif !@user.authenticate(params[:user][:current_password])
@@ -74,6 +67,11 @@ class UsersController < ApplicationController
         flash[:danger] = "You need to sign in or sign up before continuing."
         redirect_to users_sign_in_path
       end
+    end
+    
+    # 現在のユーザーをセットする
+    def set_user
+      @user = current_user
     end
     
 end
