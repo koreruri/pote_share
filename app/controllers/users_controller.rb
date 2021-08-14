@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def profile_update
     @user = current_user
     
-    if @user.update(user_params) &&
+    if @user.update(user_params)
       @user.image.attach(params[:user][:image])
       flash[:success] = "Profile was successfully updated."
       redirect_to users_profile_url
@@ -51,7 +51,6 @@ class UsersController < ApplicationController
     end
     
     if @user.update(user_params) && !!@user.authenticate(params[:user][:current_password])
-      @user.image.attach(params[:user][:image])
       flash[:success] = "Your account has been updated successfully."
       redirect_to root_url
     else
