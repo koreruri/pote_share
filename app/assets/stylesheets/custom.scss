@@ -299,3 +299,7 @@ div.field, div.actions {
     max-width: 100%;
   }
 }
+
+.field_with_errors.parent {
+  border: none;
+}
