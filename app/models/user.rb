@@ -8,8 +8,10 @@ class User < ApplicationRecord
               uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :image, presence: true, on: :update
-  validates :introduction, presence: true, on: :update
+  
+  #アカウントページで画像、紹介がないとエラーになるのでバリデーションは無し
+  # validates :image, presence: true, on: :update
+  # validates :introduction, presence: true, on: :update
   
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

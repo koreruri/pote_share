@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       flash.now[:danger] = "現在のパスワードが正しくありません"
     end
     
-    if @user.update(user_params) && !!@user.authenticate(params[:user][:current_password])
+    if @user.update(user_params) && @user.authenticate(params[:user][:current_password])
       flash[:success] = "Your account has been updated successfully."
       redirect_to root_url
     else
@@ -73,5 +73,5 @@ class UsersController < ApplicationController
     def set_user
       @user = current_user
     end
-    
+  
 end
