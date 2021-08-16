@@ -22,7 +22,7 @@
         </div>
         <div class="nav-item">
           <% if current_user.image.attached? %>
-            <%= image_tag(current_user.image, alt: "メニュー", class: 'mx-3 p-1 host-icon nav-trigger') %>
+            <%= image_tag(current_user.icon_image, alt: "メニュー", class: 'mx-3 p-1 host-icon nav-trigger') %>
           <% else %>
             <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "メニュー", class: 'mx-3 p-1 host-icon nav-trigger') %>
           <% end %>

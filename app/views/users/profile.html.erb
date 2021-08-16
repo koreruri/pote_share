@@ -19,7 +19,7 @@
               <div class="col-md-6 offset-md-3">
                 <div class="icon-box">
                   <% if @user.image.attached? %>
-                    <%= image_tag(@user.image, alt: "アイコン画像", class: 'icon-image host-icon') %>
+                    <%= image_tag(@user.icon_image, alt: "アイコン画像", class: 'icon-image host-icon') %>
                   <% else %>
                     <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "アイコン画像", class: 'icon-image host-icon') %>
                   <% end %>

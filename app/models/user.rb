@@ -23,4 +23,9 @@ class User < ApplicationRecord
                               BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+  
+  # アイコン用のリサイズ済み画像を返す
+  def icon_image
+    image.variant(resize_to_limit: [500, 500])
+  end
 end
