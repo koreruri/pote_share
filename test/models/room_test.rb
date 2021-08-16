@@ -4,7 +4,7 @@ class RoomTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:michael)
-    @room = @user.rooms.build(name: "test room", introduction: "Lorem ipsum", price: 5000, address: "東京都新宿区", user_id: @user.id)
+    @room = @user.rooms.build(name: "test room", introduction: "Lorem ipsum", price: 5000, address: "東京都新宿区")
   end
   
   test "should be valid" do
@@ -49,5 +49,9 @@ class RoomTest < ActiveSupport::TestCase
   test "address should be present" do
     @room.address=""
     assert_not @room.valid?
+  end
+  
+  test "order should be most recent first" do
+    assert_equal rooms(:most_recent), Room.first
   end
 end

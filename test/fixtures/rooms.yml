@@ -1,15 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  introduction: MyText
-  price: 1
-  address: MyString
-  user: one
+sapporo:
+  name: "別荘　スキー場近く"
+  introduction: "スキー場まで徒歩5分！ レンタル品割引サービス付き"
+  price: 6000
+  address: "北海道札幌市"
+  created_at: <%= 10.minutes.ago %>
+  user: michael
 
-two:
-  name: MyString
-  introduction: MyText
-  price: 1
-  address: MyString
-  user: two
+osaka:
+  name: "星の見える部屋"
+  introduction: "満点の星空！お楽しみください"
+  price: 10000
+  address: "大阪府大阪市"
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+osaka:
+  name: "自然に囲まれたお部屋"
+  introduction: "夕食付き！京野菜をお楽しみください。"
+  price: 7000
+  address: "京都府宇治市"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+most_recent:
+  name: "海が部屋から見える部屋"
+  introduction: "海がすぐ近く！"
+  price: 11000
+  address: "沖縄県那覇市"
+  created_at: <%= Time.zone.now %>
+  user: michael
