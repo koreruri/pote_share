@@ -4,8 +4,7 @@ class RoomTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:michael)
-    #このコードは慣習的に正しくない
-    @room = Room.new(name: "test room", introduction: "Lorem ipsum", price: 5000, address: "東京都新宿区", user_id: @user.id)
+    @room = @user.rooms.build(name: "test room", introduction: "Lorem ipsum", price: 5000, address: "東京都新宿区", user_id: @user.id)
   end
   
   test "should be valid" do
