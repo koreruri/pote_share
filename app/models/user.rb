@@ -8,8 +8,12 @@ class User < ApplicationRecord
               uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
+                        message: "jpeg,gif,pngファイルのいずれかを選択して下さい" },
+                    size: { less_than: 5.megabytes,
+                        message: "画像ファイルサイズは5MB以下にして下さい" }
   
-  #アカウントページで画像、紹介がないとエラーになるのでバリデーションは無し
+  #users/editで画像、紹介がないとエラーになるのでpresenceバリデーションは無し
   # validates :image, presence: true, on: :update
   # validates :introduction, presence: true, on: :update
   
