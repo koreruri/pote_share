@@ -2,24 +2,25 @@
   <h4 class="pb-4">検索結果：<%= @results.count %>件</h4>
   <div class="row">
     
-    <% @results.each do |result| %>
-
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        <div class="room-frame-inner">
-          <%= link_to "#" do %>
-            <div class="room-image-out">
-              <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg", alt: "部屋画像", class: "room-image", oneerror: "this.onerror=null;this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';") %>
-            </div>
-            <div class="room-profile">
-              <p class="room-profile-name"><%= result.name %></p>
-              <p class="room-profile-city"><%= result.address %></p>
-              <p class="room-profile-price price-icon"><%= result.price %></p>
-            </div>
-          <% end %>
+    <% if @results.any? %>
+      <% @results.each do |result| %>
+  
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="room-frame-inner">
+            <%= link_to "#" do %>
+              <div class="room-image-out">
+                <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg", alt: "部屋画像", class: "room-image", oneerror: "this.onerror=null;this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';") %>
+              </div>
+              <div class="room-profile">
+                <p class="room-profile-name"><%= result.name %></p>
+                <p class="room-profile-city"><%= result.address %></p>
+                <p class="room-profile-price price-icon"><%= result.price %></p>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    
+      
+      <% end %>
     <% end %>
-    
   </div>
 </div>
