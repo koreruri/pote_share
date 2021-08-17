@@ -5,7 +5,7 @@
 
       <%= form_with(model: @user, url: users_edit_path, local: true) do |f| %>
         
-        <%= render 'shared/error_messages' %>
+        <%= render 'shared/error_messages', object: f.object %>
         
         <div class="field">
           <div class="form-group">

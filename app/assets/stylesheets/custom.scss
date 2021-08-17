@@ -320,6 +320,62 @@ div.field, div.actions {
   width: 75%;
 }
 
+// rooms/new
+
+.room-new {
+  .room-nav{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    li {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  .room-nav-pc {
+    height: 100vh;
+    .active {
+      border-right: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+  }
+  .room-nav-mobile {
+    height: auto;
+    .active {
+      border-bottom: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+    li {
+      float: left;
+    }
+  }
+  .room-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+  }
+  .room-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 50px auto;
+  }
+  .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+    label {
+      font-weight: bold;
+    }
+  }
+}
+
+
+
 // rooms/search
 
 .room {

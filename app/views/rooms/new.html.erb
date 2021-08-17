@@ -1,0 +1,76 @@
+<div class="container-fiuld room-new">
+  <div class="row">
+    <div class="col-lg-2 room-nav room-nav-pc d-lg-block d-none">
+      <ul>
+        <li class="active">
+          <%= link_to "基本情報", new_room_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-2 room-nav room-nav-mobile d-lg-none">
+      <ul>
+        <li class="active">
+          <%= link_to "基本情報", new_room_path %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-10 room-view">
+      <div class="room-view-box">
+        
+        <%= form_with(model: @room, local: true) do |f| %>
+          <div class="update-content">
+            <div class="row">
+              <h5>ルーム情報登録</h5>
+            </div>
+            <%= render 'shared/error_messages', object: f.object %>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :name, class: 'col-md-3 required-a' %>
+              <%= f.text_field :name, class: 'form-control mb-4 col-md-9', placeholder: 'ルーム名を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :introduction, class: 'col-md-3 required-a' %>
+              <%= f.text_area :introduction, rows: '5', class: 'form-control mb-4 col-md-9', placeholder: 'ルーム説明を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :price, class: 'col-md-3 required-a' %>
+              <%= f.number_field :price, class: 'form-control mb-4 col-md-9', placeholder: '一日あたりの料金を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :address, class: 'col-md-3 required-a' %>
+              <%= f.text_field :address, class: 'form-control mb-4 col-md-9', placeholder: '住所を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :image, class: 'col-md-3 required-a' %>
+              <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: 'mb-4 col-md-9', placeholder: 'ルーム画像をアップロード' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.submit '登録', class: 'col-md-2 btn btn-primary mx-3' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#room_image").bind("change", function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("最大ファイルサイズは5MBです。小さいファイルを選択してください。");
+      $("room_image").val("");
+    }
+  });
+</script>
