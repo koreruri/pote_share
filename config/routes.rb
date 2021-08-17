@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   post '/users/sign_in', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
 end
