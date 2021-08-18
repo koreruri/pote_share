@@ -17,7 +17,7 @@
     <div class="col-lg-10 room-view">
       <div class="room-view-box">
         
-        <%= form_with(model: @room, local: true) do |f| %>
+        <%= form_with(model: @room, url: new_room_path, local: true) do |f| %>
           <div class="update-content">
             <div class="row">
               <h5>ルーム情報登録</h5>
