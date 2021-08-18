@@ -35,7 +35,11 @@
             <%= f.label :person_num %>
             <%= f.number_field :end_date, class: 'form-control mb-4' %>
             <%= f.hidden_field :room_id, value: @room.id %>
-            <%= f.submit '予約する', class: 'btn btn-primary form-control' %>
+            <% if logged_in? %>
+              <%= f.submit '予約する', class: 'btn btn-primary form-control' %>
+            <% else %>
+              <a class="btn btn-primary form-control" href="/users/sign_in">ログイン</a>
+            <% end %>
           <% end %>
         </div>
       </div>
