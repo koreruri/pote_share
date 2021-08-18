@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create]
+  before_action :logged_in_user, only: [:new, :create, :posts]
   
   def new
     @room = current_user.rooms.build if logged_in?
@@ -32,6 +32,10 @@ class RoomsController < ApplicationController
     else
       @results = @rooms
     end
+  end
+  
+  def posts
+    @rooms = current_user.rooms
   end
   
   private

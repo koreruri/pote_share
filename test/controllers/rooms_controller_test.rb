@@ -20,4 +20,10 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to users_sign_in_path
   end
+  
+  test "should redirect posts when not logged in" do
+    get posts_rooms_path
+    assert_redirected_to users_sign_in_path
+  end
+  
 end
