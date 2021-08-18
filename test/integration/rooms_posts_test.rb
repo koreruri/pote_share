@@ -15,7 +15,6 @@ class RoomsPostsTest < ActionDispatch::IntegrationTest
       assert_select 'a[href=?]', room_path(room), text: room.name
       assert_select 'td', text: room.introduction
       assert_select 'td', text: room.price.to_s
-      assert_select 'td', text: room.created_at.to_s
     end
   end
 end
