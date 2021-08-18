@@ -1,7 +1,6 @@
 <div class="container room-show">
   <div class="row">
     <div class="col-md-8">
-      <%= image_tag(@room.image, alt: '部屋画像') if @room.image.attached? %>
       <% if @room.image.attached? %>
         <%= image_tag(@room.image, alt: "部屋画像", class: 'room-show-image') %>
       <% else %>

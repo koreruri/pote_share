@@ -7,9 +7,13 @@
   
         <div class="col-sm-6 col-lg-4 col-xl-3">
           <div class="room-frame-inner">
-            <%= link_to "#" do %>
+            <%= link_to result do %>
               <div class="room-image-out">
-                <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg", alt: "部屋画像", class: "room-image", oneerror: "this.onerror=null;this.src='https://presite-potepancamp-rails-02.herokuapp.com/assets/room01.jpg';") %>
+                <% if result.image.attached? %>
+                  <%= image_tag(result.image, alt: "部屋画像", class: 'room-image') %>
+                <% else %>
+                  <%= image_tag('/assets/room01.jpg', alt: "部屋画像", class: 'room-image') %>
+                <% end %>
               </div>
               <div class="room-profile">
                 <p class="room-profile-name"><%= result.name %></p>
