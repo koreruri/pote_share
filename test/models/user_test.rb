@@ -77,5 +77,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  test "associated rooms should be destroyed" do
+    @user.save
+    @user.rooms.create!(name: "test room", introduction: "Lorem ipsum", price: 5000, address: "東京都新宿区")
+    assert_difference 'Room.count', -1 do
+      @user.destroy
+    end
+  end
+  
 end
 

@@ -2,16 +2,17 @@
   <div class="header-inner">
     <div class="header-left-nav">
       <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png", alt: "サイトのロゴ画像"), root_path, id: "logo" %>
-      <%= form_with url: "#" do |f| %>
+      
+      <%= form_with url: search_rooms_path, method: :get, local: true do |f| %>
         <div class="header-search d-lg-inline-block d-none">
-          <input type="text" name="area" id="area" value="" class="form-control" placeholder="エリア">
+          <%= f.text_field :area, class: 'form-control', placeholder: "エリア" %>
           <i class="fas fa-map-marker-alt"></i>
         </div>
         <div class="header-search d-lg-inline-block d-none">
-          <input type="text" name="keyword" id="keyword" value="" class="form-control" placeholder="キーワード">
+          <%= f.text_field :keyword, class: 'form-control', placeholder: "キーワード"%>
           <i class="fas fa-search"></i>
         </div>
-        <input type="submit" name="commit" value="" class="d-none" data-disable-with="">
+        <%= f.submit "", class:'d-none'%>
       <% end %>
     </div>
     
@@ -27,9 +28,9 @@
             <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "メニュー", class: 'mx-3 p-1 host-icon nav-trigger') %>
           <% end %>
           <ul class="header-nav-menu" style= "display: none;">
-            <li><%= link_to "ルーム登録", "#" %></li>
+            <li><%= link_to "ルーム登録", new_room_path %></li>
             <li><%= link_to "予約済みルーム一覧", "#" %></li>
-            <li><%= link_to "登録済みルーム一覧", "#" %></li>
+            <li><%= link_to "登録済みルーム一覧", posts_rooms_path %></li>
             <li><%= link_to "設定", users_account_path %></li>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
           </ul>

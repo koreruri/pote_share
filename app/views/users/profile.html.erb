@@ -1,6 +1,6 @@
 <div class="container-fiuld user"> 
   <div class="row">
-    <%= render 'sidebar' %>
+    <%= render 'shared/sidebar' %>
     
     <div class="col-lg-10 user-view">
       <div class="user-view-box">
@@ -12,7 +12,7 @@
   
         <%= form_with(model: @user, url: users_profile_path, local: true) do |f| %>
         
-          <%= render 'shared/error_messages' %>
+          <%= render 'shared/error_messages', object: f.object %>
           
           <div class="update-content">
             <div class="row">
@@ -47,7 +47,7 @@
           </div>
           <div class="update-content">
             <div class="row">
-              <input type="submit" name="commit" value="更新" class="col-md-2 btn btn-primary mx-3" data-disable-with="更新">
+              <%= f.submit "更新", class: 'col-md-2 btn btn-primary mx-3' %>
             </div>
           </div>
         <% end %>

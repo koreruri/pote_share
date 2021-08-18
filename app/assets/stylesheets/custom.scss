@@ -20,6 +20,10 @@ ul {
 
 a {
   color: #000;
+  &:hover {
+    text-decoration: none;
+    color: #333333;
+  }
 }
 
 .btn-primary {
@@ -31,6 +35,10 @@ a {
   width: 100%;
   margin-top: 45px;
   background: #eee;
+}
+
+.hidden {
+  display: none!important;
 }
 
 // header
@@ -219,13 +227,6 @@ a {
   text-align: center;
 }
 
-.host-icon {
-  width: 65px;
-  height: 65px;
-  object-fit: cover;
-  border-radius: 50px;
-}
-
 .required-a::after {
   content: "必須";
   color: #fff;
@@ -315,3 +316,223 @@ div.field, div.actions {
 .field_with_errors.profile {
   width: 75%;
 }
+
+// rooms/new
+
+.room-new {
+  .room-nav{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 15px;
+    li {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  .room-nav-pc {
+    height: 100vh;
+    .active {
+      border-right: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+  }
+  .room-nav-mobile {
+    height: auto;
+    .active {
+      border-bottom: 3px solid #4a90e2;
+      a {
+        color: #4a90e2;
+      }
+    }
+    li {
+      float: left;
+    }
+  }
+  .room-view {
+    background-color: #F6F8F9;
+    border-left: 2px solid #e2e2e2;
+  }
+  .room-view-box {
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 50px auto;
+  }
+  .update-content {
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin: 0 15px;
+    font-size: 16px;
+    label {
+      font-weight: bold;
+    }
+  }
+}
+
+// room/show
+
+.room-show, .reservations-new {
+    padding: 30px 0;
+}
+
+.room-show-image, .reservations-new-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.room-show-detile, .reservations-new-detile {
+  display: flex;
+  align-items: center;
+}
+
+.room-show-detile-icon, .reservations-new-detile-icon {
+  padding: 10px;
+}
+
+.room-show-profile, .reservations-new-profile {
+  padding: 15px;
+}
+
+.room-show-profile-name, .reservations-new-profile-name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+.room-show-profile-address, .reservations-new-profile-address {
+  font-size: 14px;
+}
+
+.room-show-detile-content, .reservations-new-detile-content {
+  font-size: 16px;
+  line-height: 30px;
+  padding: 30px 10px;
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+  word-break: break-all;
+}
+
+.room-show-nav, .reservations-new-nav {
+  padding: 20px;
+  border: 1px solid #eaedef;
+}
+
+.room-show-date-select, .reservations-new-date-select {
+  padding: 15px 0;
+}
+
+.room-show-date-select label, .reservations-new-date-select label {
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+
+// rooms/search
+
+.room {
+  width: 100%;
+  padding: 30px 60px;
+}
+
+.room-frame-inner {
+  border: 1px solid #e2e2e2;
+  margin-bottom: 10px;
+}
+
+.room-image-out {
+  position: relative;
+  width: 100%;
+  background: #F6F8F9;
+  height: 200px;
+}
+
+.room-image {
+  width: 100%;
+  height: 180px;
+  position: absolute;
+  top: 20px;
+  object-fit: cover;
+}
+
+.room-profile {
+  width: 100%;
+  padding: 15px;
+  p {
+    word-break: break-all;
+  }
+}
+
+.room-profile-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #909090;
+}
+
+.room-profile-city {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.room-profile-price {
+  text-align: right;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.price-icon::before {
+  content: "￥";
+  padding-right: 3px;
+}
+
+// rooms/posts
+
+.room-posts, .reservations {
+  max-width: 100vw;
+  padding: 30px 60px;
+  table {
+    min-width: 800px;
+    thead {
+      tr {
+        border-top: 1px solid #eaedef;
+        border-bottom: 1px solid #eaedef;
+      }
+      th {
+        padding: 8px 15px;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #eaedef;
+      }
+      td {
+        padding: 10px;
+      }
+      a {
+        color: #4a90e2;
+        text-decoration: underline;
+      }
+      .posts-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #909090;
+      }
+      .posts-content {
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+
+.room-posts-image, .reservations-image {
+  width: 240px;
+  height: 140px;
+  object-fit: cover;
+}
+
+
+

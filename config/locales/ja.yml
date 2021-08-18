@@ -10,3 +10,9 @@ ja:
     password_confirmation: パスワード確認
     image: アイコン画像
     introduction: 自己紹介
+   room:
+    name: ルーム名
+    introduction: ルーム紹介
+    price: 料金
+    address: 住所
+    image: ルーム画像
