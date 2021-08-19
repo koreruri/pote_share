@@ -21,4 +21,6 @@ Rails.application.routes.draw do
       get 'posts'
     end
   end
+  
+  resources :reservations, only: [:index, :new, :create]
 end
