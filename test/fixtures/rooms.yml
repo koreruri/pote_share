@@ -16,7 +16,7 @@ osaka:
   created_at: <%= 3.years.ago %>
   user: michael
 
-osaka:
+kyoto:
   name: "自然に囲まれたお部屋"
   introduction: "夕食付き！京野菜をお楽しみください。"
   price: 7000
