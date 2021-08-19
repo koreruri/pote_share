@@ -507,6 +507,9 @@ div.field, div.actions {
     tbody {
       tr {
         border-bottom: 1px solid #eaedef;
+        &:nth-child(even) {
+          background-color: #f9fafb;
+        }
       }
       td {
         padding: 10px;
@@ -527,12 +530,8 @@ div.field, div.actions {
   }
 }
 
-
 .room-posts-image, .reservations-image {
   width: 240px;
   height: 140px;
   object-fit: cover;
 }
-
-
-

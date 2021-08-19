@@ -29,7 +29,7 @@
           <% end %>
           <ul class="header-nav-menu" style= "display: none;">
             <li><%= link_to "ルーム登録", new_room_path %></li>
-            <li><%= link_to "予約済みルーム一覧", "#" %></li>
+            <li><%= link_to "予約済みルーム一覧", reservations_path %></li>
             <li><%= link_to "登録済みルーム一覧", posts_rooms_path %></li>
             <li><%= link_to "設定", users_account_path %></li>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
