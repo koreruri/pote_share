@@ -59,5 +59,13 @@ class RoomsShowTest < ActionDispatch::IntegrationTest
                                                        room_id: @room.id } }
     assert flash.empty?
     assert_template 'reservations/new'
+    reservation = assigns(:reservation)
+    days_of_use = assigns(:days_of_use)
+    total_price = assigns(:total_price)
+    assert_select 'input[name=?]', 'reservation[start_date]', value: reservation.start_date.to_s(:date_jp)
+    assert_select 'input[name=?]', 'reservation[end_date]', value: reservation.end_date.to_s(:date_jp)
+    assert_match "使用日数 : #{days_of_use.to_s}日", response.body
+    assert_match "人数 : #{reservation.person_num}人", response.body
+    assert_select 'input[name=?]', 'reservation[total_price]', value: total_price
   end
 end

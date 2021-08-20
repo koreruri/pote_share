@@ -21,8 +21,8 @@ class ReservationsController < ApplicationController
       flash[:danger] = "人数は正の整数で入力して下さい"
       redirect_to @reservation.room
     else
-      @days_of_user = days_of_user(@reservation.start_date, @reservation.end_date)
-      @total_price = total_price(@reservation.person_num, @days_of_user, @reservation.room.price)
+      @days_of_use = days_of_use(@reservation.start_date, @reservation.end_date)
+      @total_price = total_price(@reservation.person_num, @days_of_use, @reservation.room.price)
     end
   end
 
@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
     end
     
     #使用日数の計算
-    def days_of_user(start_date, end_date)
+    def days_of_use(start_date, end_date)
       return ((end_date - start_date) / ( 60 * 60 * 24)).to_i
     end
     
