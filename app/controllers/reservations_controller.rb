@@ -28,9 +28,13 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = current_user.reservations.build(reservation_params)
-    @reservation.save
-    flash[:success] = "Resevation was successfully created."
-    redirect_to @reservation
+    if @reservation.save
+      flash[:success] = "Resevation was successfully created."
+      redirect_to @reservation
+    else
+      flash[:danger] = "最初からやり直してください"
+      redirect_to @reservation.room
+    end
   end
   
   def show
