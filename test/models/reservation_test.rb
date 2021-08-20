@@ -7,8 +7,10 @@ class ReservationTest < ActiveSupport::TestCase
     @room = rooms(:sapporo)
     today = DateTime.now
     start_date = today
-    end_date = start_date + 1
-    @reservation = @room.reservations.build(start_date: start_date, end_date: end_date, person_num: 2, user_id: @user.id)
+    end_date = start_date + 2
+    person_num = 2
+    total_price = ( end_date - start_date ) .to_i * @room.price * person_num
+    @reservation = @room.reservations.build(start_date: start_date, end_date: end_date, person_num: person_num, total_price: total_price, user_id: @user.id)
   end
   
   test "should be valid" do
@@ -52,6 +54,26 @@ class ReservationTest < ActiveSupport::TestCase
   
   test "person_num should be integer" do
     @reservation.person_num = 1000.1
+    assert_not @reservation.valid?
+  end
+  
+  test "total_price is should be present" do
+    @reservation.total_price = ""
+    assert_not @reservation.valid?
+  end
+  
+  test "total_price should be numbers" do
+    @reservation.total_price = "total_price"
+    assert_not @reservation.valid?
+  end
+  
+  test "total_price should be greater than 0" do
+    @reservation.total_price = -1000
+    assert_not @reservation.valid?
+  end
+  
+  test "total_price should be integer" do
+    @reservation.total_price = 1000.1
     assert_not @reservation.valid?
   end
   

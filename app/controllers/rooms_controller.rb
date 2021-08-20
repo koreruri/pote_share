@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
   
   def show
     @room = Room.find(params[:id])
+    @reservation = @room.reservations.build if logged_in?
   end
   
   def search

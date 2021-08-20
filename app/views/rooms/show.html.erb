@@ -25,14 +25,13 @@
       <div class="room-show-nav">
         <h5 class="price-icon"><%= @room.price %> / 日</h5>
         <div class="room-show-date-select">
-          <form action="/reservations/new" accept-charset="UTF-8" method="get">
-          <%= form_with do |f| %>
-            <%= f.label :start_date %>
+          <%= form_with model: @reservation, url: new_reservation_path, method: :get, local: true do |f| %>
+            <%= f.label :start_date, class: 'required-a'%>
             <%= f.date_field :start_date, class: 'form-control mb-4' %>
-            <%= f.label :end_date %>
+            <%= f.label :end_date, class: 'required-a' %>
             <%= f.date_field :end_date, class: 'form-control mb-4' %>
-            <%= f.label :person_num %>
-            <%= f.number_field :end_date, class: 'form-control mb-4' %>
+            <%= f.label :person_num, class: 'required-a' %>
+            <%= f.number_field :person_num, class: 'form-control mb-4' %>
             <%= f.hidden_field :room_id, value: @room.id %>
             <% if logged_in? %>
               <%= f.submit '予約する', class: 'btn btn-primary form-control' %>

@@ -16,3 +16,8 @@ ja:
     price: 料金
     address: 住所
     image: ルーム画像
+   reservation:
+    start_date: 開始日
+    end_date: 終了日
+    person_num: 人数
+    total_price: 合計金額

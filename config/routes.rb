@@ -22,5 +22,5 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :reservations, only: [:index, :new, :create]
+  resources :reservations, only: [:index, :new, :create, :show]
 end

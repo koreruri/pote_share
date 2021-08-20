@@ -4,17 +4,12 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:michael)
+    @room = rooms(:sapporo)
   end
   
   test "should get index" do
     log_in_as(@user)
     get reservations_path
-    assert_response :success
-  end
-
-  test "should get new" do
-    log_in_as(@user)
-    get new_reservation_path
     assert_response :success
   end
   
