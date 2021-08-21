@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_logged_in_user, only: [:new, :create]
-  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :profile, :profile_update]
   before_action :set_user, only: [:show, :profile, :profile_update, :edit, :update]
   
   def new

@@ -14,10 +14,10 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_template 'users/profile'
   end
   
-  test "successful profile edit" do
-    log_in_as(@user)
+  test "successful profile edit with friendly forwarding" do
     get users_profile_path
-    assert_template 'users/profile'
+    log_in_as(@user)
+    assert_redirected_to users_profile_url
     name = "Michael Test"
     introduction = "Introduction"
     image = fixture_file_upload('test/fixtures/kitten.jpg', 'image/jpeg')
