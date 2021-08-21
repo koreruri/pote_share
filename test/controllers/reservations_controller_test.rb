@@ -4,6 +4,7 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:michael)
+    @other_user = users(:sufjan)
     @reservation = reservations(:sapporo)
   end
   
@@ -44,5 +45,12 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
     get reservation_path(@reservation)
     assert_not flash.empty?
     assert_redirected_to users_sign_in_url
+  end
+  
+  test "should redirect show when logged in as wrong user" do
+    log_in_as(@other_user)
+    get reservation_path(@user.reservations.first)
+    assert_not flash[:danger].empty?
+    assert_redirected_to root_url
   end
 end

@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :create, :show]
+  before_action :correct_user, only: :show
   
   def index
     @reservations = current_user.reservations
@@ -45,6 +46,14 @@ class ReservationsController < ApplicationController
   
     def reservation_params
       params.require(:reservation).permit(:start_date, :end_date, :person_num, :total_price, :room_id)
+    end
+    
+    def correct_user
+      @reservation = current_user.reservations.find_by(id: params[:id])
+      if @reservation.nil?
+        flash[:danger] = "アクセス権限がありません"
+        redirect_to root_url
+      end
     end
     
     #使用日数の計算
