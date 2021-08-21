@@ -4,7 +4,7 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:michael)
-    @room = rooms(:sapporo)
+    @reservation = reservations(:sapporo)
   end
   
   test "should get index" do
@@ -13,6 +13,15 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
   
+  test "should get show" do
+    log_in_as(@user)
+    get reservation_path(@reservation)
+    assert_match @reservation.room.name, response.body
+    assert_match @reservation.start_date.to_s(:datekanji_jp), response.body
+    assert_match @reservation.end_date.to_s(:datekanji_jp), response.body
+    assert_match @reservation.total_price.to_s, response.body
+  end
+    
    test "should redirect index when not logged in" do
     get reservations_path
     assert_not flash.empty?
@@ -25,8 +34,14 @@ class ReservationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to users_sign_in_url
   end
   
-  test "should redirect update when not logged in" do
+  test "should redirect create when not logged in" do
     post reservations_path
+    assert_not flash.empty?
+    assert_redirected_to users_sign_in_url
+  end
+  
+  test "should redirect show when not logged in" do
+    get reservation_path(@reservation)
     assert_not flash.empty?
     assert_redirected_to users_sign_in_url
   end
