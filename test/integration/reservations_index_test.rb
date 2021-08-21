@@ -6,10 +6,12 @@ class ReservationsIndexTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
   
-  test "reservations index" do
-    log_in_as(@user)
+  test "reservations index with friendly forwarding" do
     get reservations_path
-    assert_template 'reservations/index'
+    log_in_as(@user)
+    # assert_template 'reservations/index'
+    assert_redirected_to reservations_url
+    follow_redirect!
     reservations = assigns[:reservations]
     reservations.each do |reservation|
       assert_select 'a[href=?]', room_path(reservation.room), text: reservation.room.name

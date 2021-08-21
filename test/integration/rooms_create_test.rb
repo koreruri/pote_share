@@ -21,10 +21,10 @@ class RoomsCreateTest < ActionDispatch::IntegrationTest
     assert_select 'div.field_with_errors'
   end
   
-  test "successful room create" do
-    log_in_as(@user)
+  test "successful room create with friendry forwarding" do
     get new_room_path
-    assert_template 'rooms/new'
+    log_in_as(@user)
+    assert_redirected_to rooms_new_url
     name = "Nice room"
     introduction = "Introduction"
     price = 5000

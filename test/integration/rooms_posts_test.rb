@@ -6,10 +6,11 @@ class RoomsPostsTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
   
-  test "rooms posts" do
-    log_in_as(@user)
+  test "rooms posts with friendry forwading" do
     get posts_rooms_path
-    assert_template 'rooms/posts'
+    log_in_as(@user)
+    assert_redirected_to posts_rooms_url
+    follow_redirect!
     rooms = assigns[:rooms]
     rooms.each do |room|
       assert_select 'a[href=?]', room_path(room), text: room.name

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     #ログイン済みのユーザーかどうか確認
     def logged_in_user
       unless logged_in?
+        store_location
         flash[:danger] = "You need to sign in or sign up before continuing."
         redirect_to users_sign_in_path
       end
