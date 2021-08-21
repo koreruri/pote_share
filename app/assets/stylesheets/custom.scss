@@ -309,11 +309,13 @@ div.field, div.actions {
   width: 100%;
 }
 
-.field_with_errors.parent.profile {
+.field_with_errors.parent.profile,
+.field_with_errors.parent.room_new {
   width: 25%;
 }
 
-.field_with_errors.profile {
+.field_with_errors.profile,
+.field_with_errors.room_new {
   width: 75%;
 }
 
