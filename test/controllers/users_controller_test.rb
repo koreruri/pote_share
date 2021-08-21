@@ -28,4 +28,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to users_sign_in_url
   end
+  
+  test "should redirect sign up when logged in" do
+    log_in_as(@user)
+    get users_sign_up_path
+    assert_not flash[:danger].empty?
+    assert_redirected_to root_url
+  end
+  
+  test "should redirect create when logged in" do
+    log_in_as(@user)
+    post users_path
+    assert_not flash[:danger].empty?
+    assert_redirected_to root_url
+  end
 end
