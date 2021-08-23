@@ -41,24 +41,24 @@ ActiveRecord::Schema.define(version: 2021_08_19_083644) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "person_num"
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.integer "person_num", null: false
     t.integer "user_id", null: false
     t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "total_price"
+    t.integer "total_price", null: false
     t.index ["room_id"], name: "index_reservations_on_room_id"
     t.index ["user_id", "room_id", "created_at"], name: "index_reservations_on_user_id_and_room_id_and_created_at"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
-    t.string "address"
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.string "address", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2021_08_19_083644) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.text "introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
