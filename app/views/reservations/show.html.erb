@@ -1,0 +1,32 @@
+<div class="container-fiuld user"> 
+  <div class="row">
+    <div class="col-md-12 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <%= label_tag 'room', '予約した部屋', class: 'col-md-3' %>
+            <div class="col-md-9"><%= link_to @reservation.room.name, @reservation.room %></div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <%= label_tag 'start_date', '開始日',  class: 'col-md-3' %>
+            <div class="col-md-9"><%= @reservation.start_date.to_s(:datekanji_jp) %></div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <%= label_tag 'end_date', '終了日', class: 'col-md-3' %>
+            <div class="col-md-9"><%= @reservation.end_date.to_s(:datekanji_jp) %></div>
+          </div>
+        </div>
+        <div class="update-content">
+          <div class="row">
+            <%= label_tag 'total_price', '価格', class: 'col-md-3' %>
+            <div class="col-md-9"><%= @reservation.total_price %>円</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

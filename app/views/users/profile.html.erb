@@ -1,0 +1,67 @@
+<div class="container-fiuld user"> 
+  <div class="row">
+    <%= render 'shared/sidebar' %>
+    
+    <div class="col-lg-10 user-view">
+      <div class="user-view-box">
+        <div class="update-content">
+          <div class="row">
+            <h5>プロフィール</h5>
+          </div>
+        </div>
+  
+        <%= form_with(model: @user, url: users_profile_path, local: true) do |f| %>
+        
+          <%= render 'shared/error_messages', object: f.object %>
+          
+          <div class="update-content">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <div class="icon-box">
+                  <% if @user.image.attached? %>
+                    <%= image_tag(@user.icon_image, alt: "アイコン画像", class: 'icon-image host-icon') %>
+                  <% else %>
+                    <%= image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", alt: "アイコン画像", class: 'icon-image host-icon') %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :image, class: 'col-md-3 required-a' %>
+              <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class:'mb-4 col-md-9', placeholder: 'アイコン画像をアップロード'%>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :name, class: 'col-md-3 required-a' %>
+              <%= f.text_field :name, class: 'form-control mb-4 col-md-9', placeholder: '名前を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.label :introduction, class: 'col-md-3 required-a' %>
+              <%= f.text_area :introduction, rows: '5', class: 'form-control mb-4 col-md-9', placeholder: '自己紹介を入力' %>
+            </div>
+          </div>
+          <div class="update-content">
+            <div class="row">
+              <%= f.submit "更新", class: 'col-md-2 btn btn-primary mx-3' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#user_image").bind("change", function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("最大ファイルサイズは5MBです。小さいファイルを選択してください。");
+      $("#user_image").val("");
+    }
+  });
+</script>

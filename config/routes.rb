@@ -1,3 +1,26 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root 'static_pages#home'
+  
+  resources :users, only: :create
+  get 'users/sign_up', to: 'users#new'
+  get 'users/account', to: 'users#show'
+  get 'users/profile', to: 'users#profile'
+  patch 'users/profile', to: 'users#profile_update'
+  get 'users/edit', to: 'users#edit'
+  patch 'users/edit', to: 'users#update'
+  
+  get '/users/sign_in', to: 'sessions#new'
+  post '/users/sign_in', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
+  post 'rooms/new', to: 'rooms#create'
+  resources :rooms do
+    collection do
+      get 'search'
+      get 'posts'
+    end
+  end
+  
+  resources :reservations, only: [:index, :new, :create, :show]
 end

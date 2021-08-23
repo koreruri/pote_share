@@ -1,0 +1,42 @@
+<div class="col-lg-2 user-nav user-nav-pc d-lg-block d-none">
+  <ul>
+    <li class="account"><%= link_to "アカウント", users_account_path %></li>
+    <li class="profile"><%= link_to "プロフィール", users_profile_path %></li>
+  </ul>
+</div>
+<div class="col-lg-2 user-nav user-nav-mobile d-lg-none">
+  <ul>
+    <li class="account"><%= link_to "アカウント", users_account_path %></li>
+    <li class="profile"><%= link_to "プロフィール", users_profile_path %></li>
+  </ul>
+</div>
+
+<div class="col-lg-2 room-nav room-nav-pc d-lg-block d-none">
+  <ul>
+    <li class="active">
+      <%= link_to "基本情報", new_room_path %>
+    </li>
+  </ul>
+</div>
+<div class="col-lg-2 room-nav room-nav-mobile d-lg-none">
+  <ul>
+    <li class="active">
+      <%= link_to "基本情報", new_room_path %>
+    </li>
+  </ul>
+</div>
+
+
+<script>
+  $(function() {
+      if ($(location).attr('pathname') == "/users/account") {
+        $('.account').addClass("active");
+        $('.room-nav').addClass("hidden");
+      } else if ($(location).attr('pathname') == "/users/profile") {
+        $('.profile').addClass("active");
+        $('.room-nav').addClass("hidden");
+      } else if ($(location).attr('pathname') == "/rooms/new") {
+        $('.user-nav').addClass("hidden");
+      }
+    });
+</script>

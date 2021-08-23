@@ -1,0 +1,30 @@
+<div class="container-fiuld room">
+  <h4 class="pb-4">検索結果：<%= @results.count %>件</h4>
+  <div class="row">
+    
+    <% if @results.any? %>
+      <% @results.each do |result| %>
+  
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="room-frame-inner">
+            <%= link_to result do %>
+              <div class="room-image-out">
+                <% if result.image.attached? %>
+                  <%= image_tag(result.image, alt: "部屋画像", class: 'room-image') %>
+                <% else %>
+                  <%= image_tag('/assets/room01.jpg', alt: "部屋画像", class: 'room-image') %>
+                <% end %>
+              </div>
+              <div class="room-profile">
+                <p class="room-profile-name"><%= result.name %></p>
+                <p class="room-profile-city"><%= result.address %></p>
+                <p class="room-profile-price price-icon"><%= result.price %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      
+      <% end %>
+    <% end %>
+  </div>
+</div>
